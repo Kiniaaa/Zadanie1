@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Fib extends Component {
@@ -27,11 +28,11 @@ class Fib extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-
     await axios.post('/api/values', {
       index: this.state.index,
     });
     this.setState({ index: '' });
+    window.location.reload();
   };
 
   renderSeenIndexes() {
@@ -54,7 +55,7 @@ class Fib extends Component {
 
   render() {
     return (
-      <div class='content'>
+      <div className='content'>
         <form onSubmit={this.handleSubmit}>
           <label>Enter your index:</label>
           <input
@@ -69,6 +70,9 @@ class Fib extends Component {
 
         <h3>Calculated Values:</h3>
         {this.renderValues()}
+        <div>
+          <Link to="/" className="link-back">Go back home</Link>
+        </div>
       </div>
     );
   }

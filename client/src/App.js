@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import OtherPage from './OtherPage';
+import Documentation from './Documentation';
 import Fib from './Fib';
+import Home from './Home';
 
 function App() {
   return (
@@ -11,11 +11,13 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Link to="/">Home</Link>
-          <Link to="/otherpage">Other Page</Link>
+          <Link to="/fibCalc"> Fib Calc </Link>
+          <Link to="/documentation">Documentation</Link>
         </header>
         <div>
-          <Route exact path="/" component={Fib} />
-          <Route path="/otherpage" component={OtherPage} />
+          <Route exact path="/" component={Home} />
+          <Route path="/fibCalc" component={Fib} />
+          <Route path="/documentation" component={Documentation} />
         </div>
       </div>
     </Router>
